@@ -13,6 +13,7 @@ for a in range(len(os.listdir(fileDirectory))):
 		print(fileList+"/"+jsonList[b])
 		with open((fileList+"/"+jsonList[b])) as f:
 			data = json.load(f)
-			for y in range(len(data["part_candidates"][0])):
-				for x in range(len(data["part_candidates"][0][str(y)])):
-					pprint(data["part_candidates"][0][str(y)][x])
+			for y in range(len(data["people"][0])):
+					print("-------------------")					
+					for x in range(len(data["people"][0]["pose_keypoints_2d"])):				
+						pprint(data["people"][0]["pose_keypoints_2d"][x])

@@ -3,9 +3,10 @@ import os
 from pprint import pprint
 import csv
 
-fd1=raw_input("Enter Train File Directory(./......./):")
-fd2=raw_input("Enter Train File Directory(./......./):")
-fd3=raw_input("Enter Train File Directory(./......./):")
+cwd = os.getcwd()
+fd1= cwd + "/JsonFiles/ayaktaDurma/"
+fd2= cwd + "/JsonFiles/Oturma/"
+fd3= cwd + "/JsonFiles/volta/"
 
 
 mainlist=list()

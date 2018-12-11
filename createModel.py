@@ -3,9 +3,11 @@ import keras
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
+import os
 
 #read in data using pandas
-train_df = pd.read_csv("/home/akin/Desktop/data.csv")
+cwd = os.getcwd()
+train_df = pd.read_csv(cwd + "data.csv")
 
 #view data structure
 train_df.head()

@@ -33,9 +33,9 @@ model = Sequential()
 n_cols = train_X.shape[1]
 
 #add layers to model
-model.add(Dense(250, activation='relu', input_shape=(n_cols,)))
-model.add(Dense(250, activation='relu'))
-model.add(Dense(250, activation='relu'))
+model.add(Dense(250, activation='sigmoid', input_shape=(n_cols,)))
+model.add(Dense(250, activation='sigmoid'))
+model.add(Dense(250, activation='sigmoid'))
 model.add(Dense(4, activation='softmax'))
 
 #compile model using accuracy to measure model performance

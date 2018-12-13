@@ -4,42 +4,41 @@ import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 import os
+import numpy as np
 
-#read in data using pandas
+def sigmoid_activation(x, takeDerivate = False):
+    
+    if(takeDerivate == True):
+        return sigmoid_activation(x) * (1 - sigmoid_activation(x))
+    
+    return 1 / (1 + np.exp(-x))
+
+def trainData(inputs,t,weights,rho,iterNo):
+for iter in range(100):                                   
+	for i in range(inputs.shape[0]):                 
+        	x=inputs[i,:]                                        
+        	sum=np.dot(weights,x)                        
+            	y=sigmoid_activation(sum,False)              
+            	delta_w = rho*(t[i]-y)*sigmoid_activation(y,True)*x  
+            	weights = np.add(weights,delta_w)                    
+return weights
+
 cwd = os.getcwd()
+
 train_df = pd.read_csv(cwd + "/data.csv")
 
-#view data structure
 train_df.head()
 
-#create a dataframe with all training data except the target column
 train_X = train_df.drop(columns=['Class'])
 
-#check that the target variable has been removed
 train_X.head()
 
-from keras.utils import to_categorical
+train_y = train_df[['Class']]
 
-#one-hot encode target column
-train_y = to_categorical(train_df.Class)
+train_y.head()
 
-#vcheck that target column has been converted
-train_y[0:5]
 
-#create model
-model = Sequential()
 
-#get number of columns in training data
-n_cols = train_X.shape[1]
 
-#add layers to model
-model.add(Dense(250, activation='relu', input_shape=(n_cols,)))
-model.add(Dense(250, activation='relu'))
-model.add(Dense(250, activation='relu'))
-model.add(Dense(4, activation='softmax'))
 
-#compile model using accuracy to measure model performance
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-#train model
-model.fit(train_X, train_y, epochs=30, validation_split=0.2)

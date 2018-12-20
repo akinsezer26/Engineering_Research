@@ -16,7 +16,6 @@ def l2Dist(x1,y1,x2,y2):
 myDistList=list()
 mainlist=list()
 beforeFrameList=list()
-momentlist=list()
 def readFromJson(_class,fileDirectory):
 	for a in range(len(os.listdir(fileDirectory))):
 		print(a+1)

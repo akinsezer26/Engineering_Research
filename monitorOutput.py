@@ -102,8 +102,12 @@ while 1:
 		prediction = loaded_model.predict_classes( single_test )
 		os.system("clear")
 		if prediction==1:
-			print("Ayakta")
+			print("Ayakta Duruyor")
 		elif prediction==2:
 			print("Oturuyor")
-		else:
+		elif prediction==3:
 			print("Yuruyor")
+		else:
+			print("Algılanamayan Hareket")
+		
+			

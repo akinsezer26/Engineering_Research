@@ -1,4 +1,4 @@
-import cv2
+#import cv2
 import numpy as np
 import json
 import os
@@ -19,5 +19,6 @@ pid = subprocess.Popen(args=[
 
 os.chdir("../openpose")
 terminalInput="./build/examples/openpose/openpose.bin --write_json output"
+#terminalInput="./build/examples/openpose/openpose.bin --video examples/media/video2.mp4 --write_json output"
 os.system(terminalInput)
 

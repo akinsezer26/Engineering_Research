@@ -1,4 +1,4 @@
-import cv2
+#import cv2
 import numpy as np
 import json
 import os
@@ -100,6 +100,7 @@ while 1:
 		single_test = np.asarray(mainlist)
 		single_test = single_test.reshape(1,52)
 		prediction = loaded_model.predict_classes( single_test )
+		os.system("clear")
 		if prediction==1:
 			print("Ayakta")
 		elif prediction==2:

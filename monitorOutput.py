@@ -12,6 +12,7 @@ def l2Dist(x1,y1,x2,y2):
 	return dist
 
 location=os.getcwd()
+
 json_file = open('model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
@@ -39,8 +40,7 @@ minValues1=np.array(minValues1)
 os.chdir("..")
 outputLocation=os.getcwd() + "/openpose/output"
 
-
-
+loaded_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 while 1:
 	jsonList=os.listdir(outputLocation)
@@ -54,8 +54,6 @@ while 1:
 				with open((outputLocation+"/"+sample)) as f:		
 					data3 = json.load(f)
 					if len(data3["people"])!=0:		
-						print(sample)
-						print(previousSample)
 						mainlist=list()
 						myDistList=list()
 						beforeFrameList=list()
@@ -125,8 +123,8 @@ while 1:
 								for a in range(len(myDistList)):
 									myDistList[a]=(myDistList[a]-minValues1[a])/(maxValues1[a]-minValues1[a])
 								mainlist.append(myDistList)
-						
-									
+					
+								
 						single_test = np.array(mainlist)
 						single_test = single_test.reshape(1,52)
 						prediction = loaded_model.predict_classes( single_test )

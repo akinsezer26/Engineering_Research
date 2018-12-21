@@ -42,8 +42,7 @@ model.add(Dense(4, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 #train model
-model.fit(train_X, train_y, epochs=200, validation_split=0.2)
-#a=model.evaluate(train_X, train_y, None, verbose=1, sample_weight=None, steps=None)
+model.fit(train_X, train_y, epochs=30, validation_split=0.2)
 
 # serialize model to JSON
 model_json = model.to_json()

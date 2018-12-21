@@ -23,7 +23,7 @@ outputLocation=os.getcwd() + "/openpose/output"
 
 while 1:
 	jsonList=os.listdir(outputLocation)
-	if len(jsonList)>2:
+	if len(jsonList)>3:
 		jsonList.sort()
 		sample=jsonList[-1]
 		previousSample=jsonList[-2]

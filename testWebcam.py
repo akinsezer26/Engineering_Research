@@ -5,8 +5,15 @@ import os
 from keras.models import model_from_json
 import subprocess
 
+os.chdir("../openpose/output")
 location=os.getcwd()
+jsonFilesToDelete=os.listdir(location)
+print(jsonFilesToDelete)
+for i in range(0,len(jsonFilesToDelete)):
+	os.system("rm -f "+jsonFilesToDelete[i])
 
+os.chdir("..")
+os.chdir("../Engineering_Research")
 pid = subprocess.Popen(args=[
     "gnome-terminal", "--command=python3 monitorOutput.py"]).pid
 

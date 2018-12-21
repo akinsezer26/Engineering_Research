@@ -5,6 +5,7 @@ import os
 from keras.models import model_from_json
 import subprocess
 import math
+import ast
 
 def l2Dist(x1,y1,x2,y2):
 	dist=math.sqrt(math.pow((x1-x2),2)+math.pow((y1-y2),2))
@@ -17,8 +18,29 @@ json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 loaded_model.load_weights("model.h5")
 
+json_file1 = open('minValues.json', 'r')
+minValues = json_file1.read()
+json_file1.close()
+minValues = ast.literal_eval(minValues)
+
+json_file2 = open('maxValues.json', 'r')
+maxValues = json_file2.read()
+json_file2.close()
+maxValues = ast.literal_eval(maxValues)
+maxValues1=list()
+minValues1=list()
+for y in range(52):
+	maxValues1.append(maxValues.pop(0))
+	minValues1.append(minValues.pop(0))
+
+maxValues1=np.array(maxValues1)
+minValues1=np.array(minValues1)
+
 os.chdir("..")
 outputLocation=os.getcwd() + "/openpose/output"
+
+
+
 
 while 1:
 	jsonList=os.listdir(outputLocation)
@@ -100,11 +122,15 @@ while 1:
 								myDistList.append(l2Dist(mylist[45],mylist[46],beforeFrameList[45],beforeFrameList[46])/scaleSample)
 								myDistList.append(l2Dist(mylist[48],mylist[49],beforeFrameList[48],beforeFrameList[49])/scaleSample)
 								myDistList.append(l2Dist(mylist[51],mylist[52],beforeFrameList[51],beforeFrameList[52])/scaleSample)
+								for a in range(len(myDistList)):
+									myDistList[a]=(myDistList[a]-minValues1[a])/(maxValues1[a]-minValues1[a])
 								mainlist.append(myDistList)
-						single_test = np.asarray(mainlist)
+						
+									
+						single_test = np.array(mainlist)
 						single_test = single_test.reshape(1,52)
 						prediction = loaded_model.predict_classes( single_test )
-						os.system("clear")
+						os.system("clear")							
 						if prediction==1:
 							print("Ayakta")
 						elif prediction==2:

@@ -15,6 +15,12 @@ def l2Dist(x1,y1,x2,y2):
 
 myDistList=list()
 mainlist=list()
+maxValues=list()
+for y in range(52):
+	maxValues.append(0)
+minValues=list()
+for y in range(52):
+	minValues.append(10000000)
 beforeFrameList=list()
 def readFromJson(_class,fileDirectory):
 	for a in range(len(os.listdir(fileDirectory))):
@@ -88,6 +94,12 @@ def readFromJson(_class,fileDirectory):
 					myDistList.append(l2Dist(mylist[45],mylist[46],beforeFrameList[45],beforeFrameList[46])/scaleSample)
 					myDistList.append(l2Dist(mylist[48],mylist[49],beforeFrameList[48],beforeFrameList[49])/scaleSample)
 					myDistList.append(l2Dist(mylist[51],mylist[52],beforeFrameList[51],beforeFrameList[52])/scaleSample)
+					for a in range(52):
+						if myDistList[a]<minValues[a]:
+							minValues[a]=myDistList[a]
+					for a in range(52):
+						if myDistList[a]>maxValues[a]:
+							maxValues[a]=myDistList[a]
 					myDistList.append(_class)
 					mainlist.append(myDistList)
 					
@@ -150,7 +162,13 @@ with open("data.csv", 'wb') as myfile:
 								'Momentum17',
 								'Class'
 							      ])
+	for a in range(len(mainlist)):
+		for b in range(len(mainlist[a])-1):
+			mainlist[a][b]=(mainlist[a][b]-minValues[b])/(maxValues[b]-minValues[b])
     	wr.writeheader()
 	wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 	wr.writerows(mainlist)
-
+with open('minValues.json', 'w') as outfile:
+    json.dump(minValues, outfile)
+with open('maxValues.json', 'w') as outfile:
+    json.dump(maxValues, outfile)

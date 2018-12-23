@@ -10,23 +10,29 @@ from keras import regularizers
 #read in data using pandas
 cwd = os.getcwd()
 train_df = pd.read_csv(cwd + "/data.csv")
+validation_df = pd.read_csv(cwd + "/dataTest.csv")
 
 #view data structure
 train_df.head()
+validation_df.head()
 
 #create a dataframe with all training data except the target column
 train_X = train_df.drop(columns=['Class'])
+validation_X = validation_df.drop(columns=['Class'])
 
 #check that the target variable has been removed
 train_X.head()
+validation_X.head()
 
 from keras.utils import to_categorical
 
 #one-hot encode target column
 train_y = to_categorical(train_df.Class)
+validation_y = to_categorical(validation_df.Class)
 
 #vcheck that target column has been converted
 train_y[0:5]
+validation_y[0:5]
 
 #create model
 model = Sequential()
@@ -41,6 +47,7 @@ n_cols = train_X.shape[1]
 #add layers to model
 model.add(Dense(52, activation='sigmoid', input_shape=(n_cols,)))
 model.add(Dense(20, activation='sigmoid'))
+model.add(Dense(20, activation='sigmoid'))
 model.add(Dense(4, activation='softmax'))
 
 #opt=optimizers.SGD(lr=0.1, momentum=0.1)
@@ -48,7 +55,7 @@ model.add(Dense(4, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 #train model
-model.fit(train_X, train_y, epochs=2000, validation_split=1)
+model.fit(train_X, train_y, epochs=200, validation_data=(validation_X, validation_y))
 
 print(model.evaluate(train_X, train_y, verbose=0))
 

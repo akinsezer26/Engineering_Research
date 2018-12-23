@@ -162,13 +162,13 @@ with open("data.csv", 'wb') as myfile:
 								'Momentum17',
 								'Class'
 							      ])
-	for a in range(len(mainlist)):
-		for b in range(len(mainlist[a])-1):
-			mainlist[a][b]=(mainlist[a][b]-minValues[b])/(maxValues[b]-minValues[b])
+#	for a in range(len(mainlist)):
+#		for b in range(len(mainlist[a])-1):
+#			mainlist[a][b]=(mainlist[a][b]-minValues[b])/(maxValues[b]-minValues[b])
     	wr.writeheader()
 	wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 	wr.writerows(mainlist)
-with open('minValues.json', 'w') as outfile:
-    json.dump(minValues, outfile)
-with open('maxValues.json', 'w') as outfile:
-    json.dump(maxValues, outfile)
+#with open('minValues.json', 'w') as outfile:
+#    json.dump(minValues, outfile)
+#with open('maxValues.json', 'w') as outfile:
+#    json.dump(maxValues, outfile)

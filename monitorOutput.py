@@ -8,8 +8,11 @@ import math
 import ast
 
 def l2Dist(x1,y1,x2,y2):
-	dist=math.sqrt(math.pow((x1-x2),2)+math.pow((y1-y2),2))
+	dist=math.sqrt(math.pow((x1*xScale-x2*xScale),2)+math.pow((y1*yScale-y2*yScale),2))
 	return dist
+
+xScale=1920/1280
+yScale=1080/720
 
 location=os.getcwd()
 

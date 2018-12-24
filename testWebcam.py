@@ -19,7 +19,7 @@ pid = subprocess.Popen(args=[
 
 os.chdir("../openpose")
 terminalInput="./build/examples/openpose/openpose.bin --write_json output"
-#terminalInput="./build/examples/openpose/openpose.bin --video examples/media/VID_20181223_144640.mp4 --write_json output"
+#terminalInput="./build/examples/openpose/openpose.bin --video examples/media/VID_20181224_112714.mp4 --write_json output"
 
 os.system(terminalInput)
 

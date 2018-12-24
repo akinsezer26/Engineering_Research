@@ -55,7 +55,7 @@ model.add(Dense(4, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 #train model
-model.fit(train_X, train_y, epochs=200, validation_data=(validation_X, validation_y))
+model.fit(train_X, train_y, epochs=200, validation_split=1)
 
 print(model.evaluate(train_X, train_y, verbose=0))
 

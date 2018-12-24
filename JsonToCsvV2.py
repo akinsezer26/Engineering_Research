@@ -28,9 +28,9 @@ def readFromJson(_class,fileDirectory):
 		fileList=(fileDirectory+str(a))
 		jsonList=os.listdir(fileList)
 		jsonList.sort()
-		for b in range(1,len(jsonList)):
+		for b in range(3,len(jsonList)):
 			print(fileList+"/"+jsonList[b])
-			with open((fileList+"/"+jsonList[b-1])) as f:
+			with open((fileList+"/"+jsonList[b-3])) as f:
 				data1 = json.load(f)			
 				for y in range(len(data1["people"][0])):
 					beforeFrameList=data1["people"][0]["pose_keypoints_2d"]
@@ -40,7 +40,7 @@ def readFromJson(_class,fileDirectory):
 				for y in range(len(data["people"][0])):
 					mylist=data["people"][0]["pose_keypoints_2d"]
 				
-				scaleSample=l2Dist(mylist[0],mylist[1],mylist[3],mylist[4])
+				scaleSample=l2Dist(mylist[3],mylist[4],mylist[24],mylist[25])
 				if scaleSample!=0:
 					myDistList.append(l2Dist(mylist[48],mylist[49],mylist[42],mylist[43])/scaleSample)
 					myDistList.append(l2Dist(mylist[42],mylist[43],mylist[0],mylist[1])/scaleSample)
@@ -52,7 +52,7 @@ def readFromJson(_class,fileDirectory):
 					myDistList.append(l2Dist(mylist[3],mylist[4],mylist[15],mylist[16])/scaleSample)
 					myDistList.append(l2Dist(mylist[15],mylist[16],mylist[18],mylist[19])/scaleSample)
 					myDistList.append(l2Dist(mylist[18],mylist[19],mylist[21],mylist[22])/scaleSample)
-					myDistList.append(l2Dist(mylist[3],mylist[4],mylist[24],mylist[25])/scaleSample)
+					myDistList.append(l2Dist(mylist[0],mylist[1],mylist[3],mylist[4])/scaleSample)
 					myDistList.append(l2Dist(mylist[24],mylist[25],mylist[27],mylist[28])/scaleSample)
 					myDistList.append(l2Dist(mylist[27],mylist[28],mylist[30],mylist[31])/scaleSample)
 					myDistList.append(l2Dist(mylist[3],mylist[4],mylist[33],mylist[34])/scaleSample)

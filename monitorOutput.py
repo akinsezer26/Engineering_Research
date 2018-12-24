@@ -7,12 +7,12 @@ import subprocess
 import math
 import ast
 
-def l2Dist(x1,y1,x2,y2):
-	dist=math.sqrt(math.pow((x1*xScale-x2*xScale),2)+math.pow((y1*yScale-y2*yScale),2))
-	return dist
+xScale=1.5
+yScale=1.5
 
-xScale=1920/1280
-yScale=1080/720
+def l2Dist(x1,y1,x2,y2):
+	dist=math.sqrt(math.pow(xScale*(x1-x2),2)+math.pow(yScale*(y1-y2),2))
+	return dist
 
 location=os.getcwd()
 
@@ -47,10 +47,10 @@ loaded_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=
 
 while 1:
 	jsonList=os.listdir(outputLocation)
-	if len(jsonList)>3:
+	if len(jsonList)>5:
 		jsonList.sort()
 		sample=jsonList[-1]
-		previousSample=jsonList[-2]
+		previousSample=jsonList[-4]
 		with open((outputLocation+"/"+previousSample)) as f:		
 			data2 = json.load(f)
 			if len(data2["people"])!=0:
@@ -69,7 +69,7 @@ while 1:
 							data = json.load(f)
 							for y in range(len(data["people"][0])):
 								mylist=data["people"][0]["pose_keypoints_2d"]
-							scaleSample=l2Dist(mylist[0],mylist[1],mylist[3],mylist[4])
+							scaleSample=l2Dist(mylist[3],mylist[4],mylist[24],mylist[25])
 							if scaleSample!=0:
 								myDistList.append(l2Dist(mylist[48],mylist[49],mylist[42],mylist[43])/scaleSample)
 								myDistList.append(l2Dist(mylist[42],mylist[43],mylist[0],mylist[1])/scaleSample)
@@ -81,7 +81,7 @@ while 1:
 								myDistList.append(l2Dist(mylist[3],mylist[4],mylist[15],mylist[16])/scaleSample)
 								myDistList.append(l2Dist(mylist[15],mylist[16],mylist[18],mylist[19])/scaleSample)
 								myDistList.append(l2Dist(mylist[18],mylist[19],mylist[21],mylist[22])/scaleSample)
-								myDistList.append(l2Dist(mylist[3],mylist[4],mylist[24],mylist[25])/scaleSample)
+								myDistList.append(l2Dist(mylist[0],mylist[1],mylist[3],mylist[4])/scaleSample)
 								myDistList.append(l2Dist(mylist[24],mylist[25],mylist[27],mylist[28])/scaleSample)
 								myDistList.append(l2Dist(mylist[27],mylist[28],mylist[30],mylist[31])/scaleSample)
 								myDistList.append(l2Dist(mylist[3],mylist[4],mylist[33],mylist[34])/scaleSample)

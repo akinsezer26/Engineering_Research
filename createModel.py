@@ -10,29 +10,29 @@ from keras import regularizers
 #read in data using pandas
 cwd = os.getcwd()
 train_df = pd.read_csv(cwd + "/data.csv")
-validation_df = pd.read_csv(cwd + "/dataTest.csv")
+#validation_df = pd.read_csv(cwd + "/dataTest.csv")
 
 #view data structure
 train_df.head()
-validation_df.head()
+#validation_df.head()
 
 #create a dataframe with all training data except the target column
 train_X = train_df.drop(columns=['Class'])
-validation_X = validation_df.drop(columns=['Class'])
+#validation_X = validation_df.drop(columns=['Class'])
 
 #check that the target variable has been removed
 train_X.head()
-validation_X.head()
+#validation_X.head()
 
 from keras.utils import to_categorical
 
 #one-hot encode target column
 train_y = to_categorical(train_df.Class)
-validation_y = to_categorical(validation_df.Class)
+#validation_y = to_categorical(validation_df.Class)
 
 #vcheck that target column has been converted
 train_y[0:5]
-validation_y[0:5]
+#validation_y[0:5]
 
 #create model
 model = Sequential()

@@ -15,7 +15,7 @@ for i in range(0,len(jsonFilesToDelete)):
 os.chdir("..")
 os.chdir("../Engineering_Research")
 pid = subprocess.Popen(args=[
-    "gnome-terminal","--zoom=1.8","--command=python3 monitorOutput.py"]).pid
+    "gnome-terminal","--geometry=16x20","--zoom=1.8","--command=python3 monitorOutput.py"]).pid
 
 os.chdir("../openpose")
 terminalInput="./build/examples/openpose/openpose.bin --write_json output"

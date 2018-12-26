@@ -6,7 +6,7 @@ hareket1="ayaktaDurma"
 hareket2="Oturma"
 hareket3="volta"
 
-hareket=hareket2
+hareket=hareket1
 print os.getcwd()
 videoLocations = "/home/celal/openpose/train/"+str(hareket)
 os.chdir('/home/celal/openpose')

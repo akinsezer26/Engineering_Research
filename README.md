@@ -34,7 +34,7 @@ necessary planning, analysis and design will be made and the first prototype wil
 Keywords: Posture detection, image processing, artifical intelligence, deep learning
 
 <h3>System Requirements for running this project</h3>
-We have used Openpose, OpenCv, Caffe, Cuda 8.0, Cudnn 5.1 for project. And we running our project on Ubuntu 16.04 64x.
+We have used Openpose, OpenCv, Caffe, Cuda 8.0, Cudnn 5.1 for project. And we have run our project on Ubuntu 16.04 64x.
 OpenPose --> https://github.com/CMU-Perceptual-Computing-Lab/openpose </br>
 Caffe    --> http://caffe.berkeleyvision.org/</br>
 OpenCV   --> https://github.com/opencv/opencv/releases/tag/3.4.3</br>

@@ -33,6 +33,46 @@ in real time. The calculated time for the first prototype is sixteen weeks. With
 necessary planning, analysis and design will be made and the first prototype will be revealed.
 Keywords: Posture detection, image processing, artifical intelligence, deep learning
 
+![](images/1.jpg)
+
+a
+
+
+![](images/2.jpg)
+
+a
+
+
+![](images/4.png)
+
+a
+
+
+![](images/5.png)
+
+a
+
+
+![](images/6.png)
+
+a
+
+
+![](images/7.jpg)
+
+a
+
+
+![](images/8.jpg)
+
+a
+
+
+![](images/9.jpg)
+
+a
+
+
 <h3>System Requirements for running this project</h3>
 We have used Openpose, OpenCv, Caffe, Cuda 8.0, Cudnn 5.1 for project. And we have run our project on Ubuntu 16.04 64x.
 OpenPose --> https://github.com/CMU-Perceptual-Computing-Lab/openpose </br>

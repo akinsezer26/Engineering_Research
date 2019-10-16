@@ -35,42 +35,42 @@ Keywords: Posture detection, image processing, artifical intelligence, deep lear
 
 ![](images/1.jpg)
 
-a
+Openpose Coco Model
 
 
 ![](images/2.jpg)
 
-a
+Model Applied to a Random Video
 
 
 ![](images/4.png)
 
-a
+Designed Main Screen
 
 
 ![](images/5.png)
 
-a
+Designed Screen for Suspected Suspects
 
 
 ![](images/6.png)
 
-a
+Reported Suspects
 
 
 ![](images/7.jpg)
 
-a
+System Demo
 
 
 ![](images/8.jpg)
 
-a
+System Demo
 
 
 ![](images/9.jpg)
 
-a
+System Demo
 
 
 <h3>System Requirements for running this project</h3>
